@@ -1,0 +1,176 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+main {
+  margin-top: 5%;
+  margin-bottom: 1em;
+}
+
+@include keyframes(identifier) {
+  from {
+    @include transform(rotate(0) scale(0.5));
+    left: 120%;
+  }
+
+  50% {
+    @include transform(rotate(-720deg) scale(0.5));
+    left: 0;
+  }
+
+  to {
+    @include transform(rotate(0) scale(1));
+  }
+}
+
+#game-body {
+  position: relative;
+  width: $main-body-width;
+  height: $main-body-height;
+  background-color: $primary-dark-background;
+  border-radius: $main-body-border-radius;
+  margin-bottom: 2em;
+  @include animation(identifier 3s);
+}
+
+.activated {
+  cursor: pointer;
+}
+
+#green-block {
+  background-color: $primary-dark-green;
+  width: $block-width;
+  height: $block-height;
+  border-radius: $block-body-border-radius 0 0 0;
+  border-style: solid;
+  border-color: $primary-dark-background;
+  border-width: $singe-edge-margin $common-edge-margin $common-edge-margin $singe-edge-margin;
+  @include transition(all .3s ease-in-out);
+}
+
+#green-block:active {
+  background-color: $primary-bright-green;
+  box-shadow: inset 0 0 8px 8px rgba(77, 77, 77, 0.8);
+}
+
+#game-body .green-light-up {
+  background-color: $primary-bright-green;
+  box-shadow: inset 0 0 8px 8px rgba(77, 77, 77, 0.8);
+}
+
+#red-block {
+  background-color: $primary-dark-red;
+  width: $block-width;
+  height: $block-height;
+  border-radius: 0 $block-body-border-radius 0 0;
+  border-style: solid;
+  border-color: $primary-dark-background;
+  border-width: $singe-edge-margin $singe-edge-margin $common-edge-margin $common-edge-margin;
+  @include transition(all .3s ease-in-out);
+}
+
+#red-block:active {
+  background-color: $primary-bright-red;
+  box-shadow: inset 0 0 8px 8px rgba(77, 77, 77, 0.8);
+}
+
+#game-body .red-light-up {
+  background-color: $primary-bright-red;
+  box-shadow: inset 0 0 8px 8px rgba(77, 77, 77, 0.8);
+}
+
+#yellow-block {
+  background-color: $primary-dark-yellow;
+  width: $block-width;
+  height: $block-height;
+  border-radius: 0 0 0 $block-body-border-radius;
+  border-style: solid;
+  border-color: $primary-dark-background;
+  border-width: $common-edge-margin $common-edge-margin $singe-edge-margin $singe-edge-margin;
+  @include transition(all .3s ease-in-out);
+}
+
+#yellow-block:active {
+  background-color: $primary-bright-yellow;
+  box-shadow: inset 0 0 8px 8px rgba(77, 77, 77, 0.8);
+}
+
+#game-body .yellow-light-up {
+  background-color: $primary-bright-yellow;
+  box-shadow: inset 0 0 8px 8px rgba(77, 77, 77, 0.8);
+}
+
+#blue-block {
+  background-color: $primary-dark-blue;
+  width: $block-width;
+  height: $block-height;
+  border-radius: 0 0 $block-body-border-radius 0;
+  border-style: solid;
+  border-color: $primary-dark-background;
+  border-width: $common-edge-margin $singe-edge-margin $singe-edge-margin $common-edge-margin;
+  @include transition(all .3s ease-in-out);
+}
+
+#blue-block:active {
+  background-color: $primary-bright-blue;
+  box-shadow: inset 0 0 8px 8px rgba(77, 77, 77, 0.8);
+}
+
+#game-body .blue-light-up {
+  background-color: $primary-bright-blue;
+  box-shadow: inset 0 0 8px 8px rgba(77, 77, 77, 0.8);
+}
+
+#inner-circle-content {
+  position: absolute;
+  left: $inner-shift-x;
+  top: $inner-shift-y;
+  background-color: $primary-light;
+  border: solid $common-edge-margin $primary-dark-background;
+  width: $inner-circle-length;
+  height: $inner-circle-length;
+  border-radius: $inner-circle-radius;
+}
+
+#main-title {
+  font-size: 60px;
+  font-family: 'Wendy One', sans-serif;
+  margin-bottom: -10px;
+  margin-top: 40px;
+}
+
+#title-sup {
+  font-size: 24px;
+}
+
+#control-panel-container {
+  @include display(flex);
+  @include justify-content(center);
+}
+
+#control-panel-container div {
+  @include display(flex);
+  @include flex-flow(column);
+  @include justify-content(flex-end);
+  margin: 5px;
+}
+
+#display-screen {
+  width: 70px;
+  height: 50px;
+  text-align: center;
+  background-color: $secondary-dark-red;
+  border: solid 4px $primary-dark-background;
+  border-radius: 10px;
+}
+
+#display-content {
+  font-size: 16px;
+  color: $secondary-red;
+  font-family: 'Orbitron', sans-serif;
+  @include transition(all .5s ease-in-out);
+}
