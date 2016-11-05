@@ -22,72 +22,13 @@
     <!-- The ReactDOM Library -->
     <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="js/build/main.js"></script>
 
   </head>
   <body>
     <main class="container">
 
-      <div clss="row">
-
-        <div class="center-block text-center" id="preview-body">
-          <h1>Markdown Previewer</h1>
-
-          <div class="col-xs-6">
-            <div class="panel panel-default" id="edit-block">
-              <div class="panel-heading text-left">< >Edit file</div>
-              <div class="panel-body">
-                <textarea autofocus># Simon-Game
-
-This is a **JavaScript & Sass** project for [Free Code Camp challenge](https://www.freecodecamp.com/challenges/build-a-simon-game). Also applied **normalize.css，Bourbon Mixins， HTML5 animations**.
-
-You can [view the site here](http://codepen.io/AsimoLoveGym/full/zKXYKk/)
-
-## Game Rules:
-
-It’s the classical Simon game. It will demo the pattern first, you follow the patter and click each block. Successfully doing so will lead you to next level.
-
-###Game difficulty
-Default game difficulty is Hard (20 steps in total to win the game). You can use the dropdown menu to choose other difficulties (9 steps or 15 steps).
-
-###Game mode
-In normal mode, you will stay in the same level if you clicked wrong.
-
-In strick mode, you will go back to level 0 if you clicked wrong.
-
-###Others
-
-Switch on/off works as the real switch in life.
-
-Start button can reset game to level 0 and start from beginning.
-
-Tempo will speed up after level 5, 9 and 13.
-
-## Reference:
-
-Mainly inspired by (just reverse engineering, never looked into the code)
-https://codepen.io/Em-Ant/full/QbRyqq/
-
-Clear All timeout, inspired by stackoverflow questions
-http://stackoverflow.com/questions/3847121/how-can-i-disable-all-settimeout-events
-
-Bourbon.sass for cross browsers compatibility
-https://github.com/thoughtbot/bourbon
-</textarea>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xs-6">
-            <div class="panel panel-info" id="preview-block">
-              <div class="panel-heading text-left"><i class="fa fa-eye"></i> Preview changes</div>
-              <div class="panel-body">
-                <textarea></textarea>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- end of "game-body" div -->
+      <div clss="row" id="display-container">
 
       </div> <!-- End of "row" div -->
 
@@ -106,7 +47,7 @@ https://github.com/thoughtbot/bourbon
         </div>
       </div>
       <div class="text-center">
-        <p>For <a href="https://www.freecodecamp.com/challenges/build-a-simon-game" target="_blank">Free Code Camp project</a></p>
+        <p>For <a href="https://www.freecodecamp.com/challenges/build-a-markdown-previewer" target="_blank">Free Code Camp project</a></p>
         <p> Copyright © <a href="https://www.freecodecamp.com/asimolovegym" target="_blank">Joey Xia</a>. All right reserved. </p>
       </div>
     </footer>
