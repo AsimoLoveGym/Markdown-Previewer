@@ -1,25 +1,23 @@
-
-// var markedString = marked('# Marked in browser\n\nRendered by **marked**.');
-//
-// $(document).ready(function(){
-//   $("#content").html(markedString);
-// });
-
 class DisplayContainer extends React.Component {
   constructor() {
     super();
     this.state = {value: ''};
     this.handleChange = this.handleChange.bind(this);
+    this.markDown = this.markDown.bind(this);
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
   }
 
+  markDown(value) {
+    const markedString = marked(value);
+    return {__html: markedString};
+  }
+
   render() {
     // const placeHolder = ''
-    const value = this.state.value;
-    const markedString = marked(value);
+
 
     return(
       <div className="center-block text-center" id="preview-body">
@@ -28,7 +26,7 @@ class DisplayContainer extends React.Component {
           <div className="panel panel-default" id="edit-block">
             <div className="panel-heading text-left">Edit file</div>
             <div className="panel-body">
-              <textarea id="edit-content" autofocus value={this.state.value} onChange={this.handleChange}># Simon-Game</textarea>
+              <textarea id="edit-content" autoFocus={true} value={this.state.value} onChange={this.handleChange}></textarea>
             </div>
           </div>
         </div>
@@ -36,7 +34,8 @@ class DisplayContainer extends React.Component {
           <div className="panel panel-info" id="preview-block">
             <div className="panel-heading text-left"><i className="fa fa-eye"></i> Preview changes</div>
             <div className="panel-body">
-              <textarea id="preview-content" value={markedString}></textarea>
+              <div id="preview-content" dangerouslySetInnerHTML={this.markDown(this.state.value)}>
+              </div>
             </div>
           </div>
         </div>
@@ -49,6 +48,9 @@ ReactDOM.render(
   <DisplayContainer />,
   document.getElementById('display-container')
 );
+
+
+// <textarea  value=></textarea>
 
 //
 // This is a **JavaScript & Sass** project for [Free Code Camp challenge](https://www.freecodecamp.com/challenges/build-a-simon-game). Also applied **normalize.css，Bourbon Mixins， HTML5 animations**.

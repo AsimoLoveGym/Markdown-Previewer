@@ -8,12 +8,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// var markedString = marked('# Marked in browser\n\nRendered by **marked**.');
-//
-// $(document).ready(function(){
-//   $("#content").html(markedString);
-// });
-
 var DisplayContainer = function (_React$Component) {
   _inherits(DisplayContainer, _React$Component);
 
@@ -24,6 +18,7 @@ var DisplayContainer = function (_React$Component) {
 
     _this.state = { value: '' };
     _this.handleChange = _this.handleChange.bind(_this);
+    _this.markDown = _this.markDown.bind(_this);
     return _this;
   }
 
@@ -33,11 +28,16 @@ var DisplayContainer = function (_React$Component) {
       this.setState({ value: event.target.value });
     }
   }, {
+    key: "markDown",
+    value: function markDown(value) {
+      var markedString = marked(value);
+      return { __html: markedString };
+    }
+  }, {
     key: "render",
     value: function render() {
       // const placeHolder = ''
-      var value = this.state.value;
-      var markedString = marked(value);
+
 
       return React.createElement(
         "div",
@@ -61,11 +61,7 @@ var DisplayContainer = function (_React$Component) {
             React.createElement(
               "div",
               { className: "panel-body" },
-              React.createElement(
-                "textarea",
-                { id: "edit-content", autofocus: true, value: this.state.value, onChange: this.handleChange },
-                "# Simon-Game"
-              )
+              React.createElement("textarea", { id: "edit-content", autoFocus: true, value: this.state.value, onChange: this.handleChange })
             )
           )
         ),
@@ -84,7 +80,7 @@ var DisplayContainer = function (_React$Component) {
             React.createElement(
               "div",
               { className: "panel-body" },
-              React.createElement("textarea", { id: "preview-content", value: markedString })
+              React.createElement("div", { id: "preview-content", dangerouslySetInnerHTML: this.markDown(this.state.value) })
             )
           )
         )
@@ -96,6 +92,8 @@ var DisplayContainer = function (_React$Component) {
 }(React.Component);
 
 ReactDOM.render(React.createElement(DisplayContainer, null), document.getElementById('display-container'));
+
+// <textarea  value=></textarea>
 
 //
 // This is a **JavaScript & Sass** project for [Free Code Camp challenge](https://www.freecodecamp.com/challenges/build-a-simon-game). Also applied **normalize.css，Bourbon Mixins， HTML5 animations**.
